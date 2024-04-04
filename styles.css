@@ -1,14 +1,84 @@
+body{
+    height: 94vh;
+}
 .header{
     display:flex;
     justify-content: center;
     position: fixed;
     top:0; left: 0; right: 0;
-    height: 100px;
+    height: 50px;
     background-color:rgb(88, 177, 95);
 }
 .title{
     display: flex;
     align-self: center;
-
     color: rgb(46, 100, 46);
+}
+.mainDisplay{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    top: 50px;
+    height: 94vh;
+
+}
+#game{
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#rock, #paper, #scissors{
+    display: flex;
+    align-items: center;
+    border: solid;
+    border-color: rgb(155, 79, 36);
+    border-radius: 20%;
+    height: 160px; width: 160px;
+
+}
+.images{
+    height: 160px; width: 160px;
+    justify-self: center;
+}
+#rock:hover, #paper:hover, #scissors:hover{
+    border-color: green;
+}
+.gameMenu{
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#scoreBoard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 5px rgb(114, 58, 25);
+    background-color: rgb(240, 188, 154);
+    width: 500px; height: 200px;
+    border-radius: 20px;
+}
+#scorePlayer, #scoreCom{
+    width: 100px; height: 100px;
+    border-radius: 20%;
+}
+#scorePlayer{
+    border: dotted 3px rgb(12, 83, 12);
+    background-color: rgb(71, 153, 71);
+}
+#scoreCom{
+    border: dotted 3px rgb(83, 12, 12);
+    background-color: rgb(153, 71, 71);
+}
+.footer{
+    height: 20px;
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    bottom: 0px; left: 0px; right: 0px;
 }
