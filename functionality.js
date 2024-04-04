@@ -1,3 +1,8 @@
+let computer;
+let result = '';
+let playerScore = 0;
+let comScore = 0;
+let round = 0;
 function getComputerChoice(){
     let randomNum = Math.floor(Math.random() * 30);
     if (randomNum <= 10){
@@ -9,45 +14,79 @@ function getComputerChoice(){
     }
 }
 function getPlayerChoice(){
-    let playerChoice = prompt("Rock, Paper, Scissors GO!");
-    playerChoice = playerChoice.toLowerCase();
-    if(playerChoice === "rock"){
-        return "rock";
-    }else if(playerChoice === "scissors"){
-        return "scissors";
-    }else if(playerChoice === "paper"){
-        return "paper";
-    }else{
-        console.log("Not an option");
-    }
+    let rock = document.querySelector("#rock");
+    rock.addEventListener("click", () =>{
+        player = "rock";
+        computer = getComputerChoice();
+        playgame();
+    })
+    let paper = document.querySelector("#paper");
+    paper.addEventListener("click", () =>{
+        player = "paper";
+        computer = getComputerChoice();
+        playgame();
+    })
+    let scissors = document.querySelector("#scissors");
+    scissors.addEventListener("click", () =>{
+        player = "scissors";
+        computer = getComputerChoice();
+        playgame();
+    })
 }
 function playgame(){
-    if(computer === "rock"){
-        if(player === "rock"){
-            console.log("Tie | rock = rock");
-        }else if(player === "paper"){
-            console.log("You win | rock < paper");
-        }else if(player === "scissors"){
-            console.log("You lose | scissors < rock");
+    round++;
+    if(round <= 10){
+        if(computer === "rock"){
+            if(player === "rock"){
+                result = "Tie | rock = rock";
+            }else if(player === "paper"){
+                result="You win | rock < paper";
+                playerScore++;
+            }else if(player === "scissors"){
+                result="You lose | rock > scissors";
+                comScore++;
+            }
+        }else if(computer === "scissors"){
+            if(player === "rock"){
+                result="You Win | scissors < rock";
+                playerScore++;
+            }else if(player === "paper"){
+                result="You Lose | scissors > paper";
+                comScore++;
+            }else if(player === "scissors"){
+                result="Tie| scissors = scissors";
+            }
+        }else if(computer === "paper"){
+            if(player === "rock"){
+                result="You win | paper > rock";
+                playerScore++;
+            }else if(player === "paper"){
+                result="Tie | paper = paper";
+            }else if(player === "scissors"){
+                result="You Lose | paper < scissors";
+                comScore++;
+            }
         }
-    }else if(computer === "scissors"){
-        if(player === "rock"){
-            console.log("You Win | scissors < rock");
-        }else if(player === "paper"){
-            console.log("You Lose | scissors > paper");
-        }else if(player === "scissors"){
-            console.log("Tie| scissors = scissors");
-        }
-    }else if(computer === "paper"){
-        if(player === "rock"){
-            console.log("You win | paper > rock");
-        }else if(player === "paper"){
-            console.log("Tie | paper = paper");
-        }else if(player === "scissors"){
-            console.log("You Lose | scissors > paper");
-        }
+        gameScoring(); 
     }
 }
-let computer = getComputerChoice();
-let player = getPlayerChoice();
-playgame();
+function gameScoring(){
+
+    const scoreBoard = document.querySelector("#scoreBoard");
+    let score = document.createElement("div");
+    score.classList.add("rounds");
+    score.textContent = result;
+    scoreBoard.appendChild(score);
+
+    const player = document.querySelector("#scorePlayer")
+    let scorePlayer = document.createElement('p');
+    scorePlayer.textContent = playerScore;
+    player.appendChild(scorePlayer);
+
+    const com = document.querySelector("#scoreCom");
+    let scoreCom = document.createElement('p');
+    scoreCom.textContent = comScore;
+    com.appendChild(scoreCom);
+}
+getPlayerChoice();
+
