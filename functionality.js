@@ -97,7 +97,7 @@ function setWinner(){
         }else if(comScore > playerScore){
             alert("computer wins!");
         }
-        else if(comSCore === playerScore){
+        else if(comScore === playerScore){
             alert("it'sa tie");
         }
     }
