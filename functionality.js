@@ -79,14 +79,28 @@ function gameScoring(){
     scoreBoard.appendChild(score);
 
     const player = document.querySelector("#scorePlayer")
-    let scorePlayer = document.createElement('p');
+    let scorePlayer = document.createElement('div');
     scorePlayer.textContent = playerScore;
-    player.appendChild(scorePlayer);
-
+    player.replaceChildren(scorePlayer);
+    
     const com = document.querySelector("#scoreCom");
-    let scoreCom = document.createElement('p');
+    let scoreCom = document.createElement('div');
     scoreCom.textContent = comScore;
-    com.appendChild(scoreCom);
+    com.replaceChildren(scoreCom);
+
+    setWinner();
+}
+function setWinner(){
+    if (round===10){
+        if(playerScore > comScore){
+            alert("player wins!");
+        }else if(comScore > playerScore){
+            alert("computer wins!");
+        }
+        else if(comSCore === playerScore){
+            alert("it'sa tie");
+        }
+    }
 }
 getPlayerChoice();
 
