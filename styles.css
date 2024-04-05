@@ -62,8 +62,11 @@ body{
     border-radius: 20px;
 }
 #scorePlayer, #scoreCom{
+    display: flex;
+    justify-content: center; align-items: center;
     width: 100px; height: 100px;
     border-radius: 20%;
+    font-size: 70px;
 }
 #scorePlayer{
     border: dotted 3px rgb(12, 83, 12);
